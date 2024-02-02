@@ -2,8 +2,6 @@ from llama_index.agent import ReActAgent
 from llama_index.llms import OpenAI, ChatMessage
 from llama_index.tools import BaseTool, FunctionTool
 
-logging.basicConfig(stream=sys.stdout, level = logging.DEBUG)
-logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 def multiply(a: int, b: int) -> int:
     """Multiply two integers and returns the result integer"""
