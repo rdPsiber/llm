@@ -1,28 +1,29 @@
-import os
-import logging
-import sys
+from llama_index.agent import ReActAgent
+from llama_index.llms import OpenAI, ChatMessage
+from llama_index.tools import BaseTool, FunctionTool
 
 logging.basicConfig(stream=sys.stdout, level = logging.DEBUG)
-0;276;0clogging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
+logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
+
+def multiply(a: int, b: int) -> int:
+    """Multiply two integers and returns the result integer"""
+    return a * b
 
 
-os.environ["OPENAI_API_KEY"] = "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"
+multiply_tool = FunctionTool.from_defaults(fn=multiply)
 
-from llama_index import VectorStoreIndex, SimpleDirectoryReader
-
-from llama_index.node_parser import SentenceSplitter
-
-documents = SimpleDirectoryReader("./data/").load_data()
-
-#print(documents)
-index = VectorStoreIndex.from_documents(documents)
+def add(a: int, b: int) -> int:
+    """Add two integers and returns the result integer"""
+    return a + b
 
 
-query_engine = index.as_query_engine()
-query_engine.query("What is the status of my porfolio")
+add_tool = FunctionTool.from_defaults(fn=add)
 
-index.storage_context.persist()
+llm = OpenAI(model="gpt-3.5-turbo-instruct")
+agent = ReActAgent.from_tools([multiply_tool, add_tool], llm=llm, verbose=True)
+                               
 
+response = agent.chat("What is 20+(2*4)? Calculate step by step ")
 
 
 
