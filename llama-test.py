@@ -17,9 +17,11 @@ def add(a: int, b: int) -> int:
 
 add_tool = FunctionTool.from_defaults(fn=add)
 
-llm = OpenAI(model="gpt-3.5-turbo-instruct")
-agent = ReActAgent.from_tools([multiply_tool, add_tool], llm=llm, verbose=True)
-                               
+try:
+    llm = OpenAI(model="gpt-3.5-turbo-instruct")
+    agent = ReActAgent.from_tools([multiply_tool, add_tool], llm=llm, verbose=True)
+except:
+    print("Exception")
 
 response = agent.chat("What is 20+(2*4)? Calculate step by step ")
 
