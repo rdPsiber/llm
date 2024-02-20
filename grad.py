@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-SEARCH_ACCESS = False
+SEARCH_ACCESS = True
 
 def ui():
     global SEARCH_ACCESS
