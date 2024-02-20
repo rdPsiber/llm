@@ -34,6 +34,14 @@ def input_modifier(user_input):
             return f"{user_input}\n\n{compiled_data}"
     return user_input
 
+
+demo = gr.interface(
+    fn = input_modifier,
+    inputs = ['text','checkbox'],
+    outputs = ["text"]
+)
+
+demo.launch()
 def output_modifier(output):
     return output
 
