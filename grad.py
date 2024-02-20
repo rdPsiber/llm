@@ -35,7 +35,7 @@ def input_modifier(user_input):
     return user_input
 
 
-demo = gr.interface(
+demo = gr.Interface(
     fn = input_modifier,
     inputs = ['text'],
     outputs = ["text"]
