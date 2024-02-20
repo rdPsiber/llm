@@ -1,5 +1,5 @@
 import gradio as gr
-import modules.shared as shared
+# import modules.shared as shared
 from googlesearch_python.googlesearch import search
 import requests
 from bs4 import BeautifulSoup
