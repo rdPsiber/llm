@@ -37,7 +37,7 @@ def input_modifier(user_input):
 
 demo = gr.interface(
     fn = input_modifier,
-    inputs = ['text','checkbox'],
+    inputs = ['text'],
     outputs = ["text"]
 )
 
