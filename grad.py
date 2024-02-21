@@ -9,7 +9,7 @@ SEARCH_ACCESS = True
 
 def ui():
     global SEARCH_ACCESS
-    SEARCH_ACCESS = gr.inputs.Checkbox(label="Enable Google Search", default=False)
+    SEARCH_ACCESS = gr.components.Checkbox(label="Enable Google Search", default=False)
     return [SEARCH_ACCESS]
 
 def input_modifier(user_input):
@@ -37,7 +37,7 @@ def input_modifier(user_input):
 
 demo = gr.Interface(
     fn = input_modifier,
-    inputs = ui(),
+    inputs = ui,
     outputs = gr.outputs.Textbox(),
     title = 'Google Search Extension'
 )
