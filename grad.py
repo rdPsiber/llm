@@ -37,7 +37,7 @@ def input_modifier(user_input):
 
 demo = gr.Interface(
     fn = input_modifier,
-    inputs = ui,
+    inputs = ['text'],
     outputs = gr.components.Textbox(),
     title = 'Google Search Extension'
 )
