@@ -17,7 +17,7 @@ def input_modifier(user_input):
     if SEARCH_ACCESS:
         if user_input.lower().startswith("search:"):
             query = user_input[len("search:"):].strip()
-            search_results = search(query, num_results=3)
+            search_results = search(query, num_results=10)
             search_data = []
 
             for result in search_results:
@@ -26,6 +26,7 @@ def input_modifier(user_input):
                     soup = BeautifulSoup(response.text, 'html.parser')
                     text = soup.get_text(strip=True)
                     text = re.sub(r'\s+', ' ', text)
+                    search_data.append("\n") 
                     search_data.append(text)
                 except Exception as e:
                     pass
